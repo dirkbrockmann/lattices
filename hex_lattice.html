@@ -23,29 +23,28 @@
 			.selected{
 				fill:red;
 			}
-
-			
 		  </style>
-		
 	</head>
-	
+
 	<body>
-		
-		
 		
 		<script type="text/javascript">
 	
 		var width = 960,
 			height = 500;
 			
-		var L = 20;
+		var L = 10;
 
 		var X = d3.scaleLinear().domain([-L-1,L+1]).range([-height/2,height/2]);
 		var Y = d3.scaleLinear().domain([-L-1,L+1]).range([-height/2,height/2]);
 		
-		var line = d3.line().x(function(d) { return X(d.x); }).y(function(d) { return Y(d.y);; });
-
+		var line = d3.line()
+			.x(function(d) { return X(d.x); })
+			.y(function(d) { return Y(d.y);; });
+		
+		//////
 		var horst = lattice.hex(L).scale(0.95).boundary("periodic");
+		//////
 		var nodes = horst.nodes;
 		
 		var svg  = d3.select("body").append("svg")
