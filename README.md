@@ -2,6 +2,12 @@
 
 A d3 module for making Dd square and hexagonal lattices with optional periodic boundary conditions, size and scale options and cell geometries. 
 
+## Installation
+
+Install into a directory ```PATH```:
+
+```
+
 ## Usage
 
 If you want to use ```lattice.js``` for D3 vizualizations, just include it in your header like so:
