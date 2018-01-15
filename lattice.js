@@ -4,10 +4,10 @@ var lattice = (function(){
 
 	// constructor for square lattice
 	
-	var square = function(N){	
-		
+	var square = function(arg){	
+		var N; if (typeof(arg)==="undefined"){N=10}else{N=arg}
 		var Scale = N,
-			BoundaryConditions = "periodic";
+			BoundaryConditions = "dirichlet";
 		
 		var M = 2*N + 1;
 		
@@ -16,18 +16,18 @@ var lattice = (function(){
    	 	})		
 		
    	 	nodes.forEach(function(d,i){
-   			d.neighbors=nn_periodic(i,M).map(function(x){return nodes[x]});
+   			d.neighbors=nn_dirichlet(i,M).map(function(x){return nodes[x]});
    		})
 		
 		// methods
 		
 		var scale = function(s){
 			if (typeof s !== "undefined") {
-				Scale = s;
-				nodes.forEach(function(d){d.x*=s/N,d.y*=s/N}) ; 
+				Scale = s * N;
+				nodes.forEach(function(d){d.x*=s,d.y*=s}) ; 
 				return this; 
 			} else {
-				return Scale;
+				return Scale / N;
 			}
 		}
 		
@@ -62,8 +62,8 @@ var lattice = (function(){
 					
 		return {
 			type:"square",
-			N:N,
-			numberOfNodes:nodes.length,
+			L:N,
+			N:nodes.length,
 			nodes: nodes,
 			scale: scale,
 			boundary: boundary,
@@ -74,10 +74,10 @@ var lattice = (function(){
 
 	// constructor for hex lattice
 
-	var hex = function(N){
-		
+	var hex = function(arg){
+		var N; if (typeof(arg)==="undefined"){N=10}else{N=arg}
 		var Scale = N,
-			BoundaryConditions = "periodic";
+			BoundaryConditions = "dirichlet";
 		
 			var b1 = [1,0], b2 = [0.5,Math.sqrt(3)/2],	
 				u = [
@@ -105,16 +105,16 @@ var lattice = (function(){
 				lookup[hexid(d)]=d;
 			})
 
-			periodic_neighbors(nodes);
+			dirichlet_neighbors(nodes);
 			
 			
 			var scale = function(s){
 				if (typeof s !== "undefined") {
-					Scale = s;
-					nodes.forEach(function(d){d.x*=s/N,d.y*=s/N}) ; 
+					Scale = s * N;
+					nodes.forEach(function(d){d.x*=s,d.y*=s}) ; 
 					return this; 
 				} else {
-					return Scale;
+					return Scale / N;
 				}
 			}
 			
@@ -206,8 +206,8 @@ var lattice = (function(){
 						
 		return {
 			type:"hexagonal",
-			N:N,
-			numberOfNodes:nodes.length,
+			L:N,
+			N:nodes.length,
 			nodes: nodes,
 			scale: scale,
 			boundary: boundary,

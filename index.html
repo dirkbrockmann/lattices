@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		
+		<script src="https://d3js.org/d3.v4.min.js"></script>
+		<script src="lattice.js"></script>
+			
+		<title>Lattices</title>
+		
+		<style>
+		    body {
+		      font-family: Arial,sans-serif;
+		    }
+		    h2 {
+		      font-size: 1.2em;
+		      margin: 60px 0 5px 0;
+		    }
+		    
+			svg {
+				border:1px solid black;
+				background: #EEEEEE;
+			}
+			
+			.cell {
+				fill:white;
+				stroke:black;
+				stroke-width:0.5px;
+			}
+
+			.neighbor {
+				fill:slateblue;
+			}
+			
+			.selected{
+				fill:maroon;
+			}
+
+			
+		  </style>
+		
+	</head>
+	
+	<body>
+		<h1>Lattices</h1>
+		<h2>Example 1: Square Lattice</h2>
+		<code>lattice.square()</code>
+
+		<div class="content" id="example_1"></div>
+		
+		<script type="text/javascript">
+			var horst;
+		(function(){
+			
+		var width = 300,
+			height = 300;
+		
+		var L = 10;
+
+		var X = d3.scaleLinear().domain([-L-1,L+1]).range([0,width]);
+		var Y = d3.scaleLinear().domain([-L-1,L+1]).range([0,height]);
+		var line = d3.line().x(function(d) { return X(d.x); }).y(function(d) { return Y(d.y);; });
+		
+		var latz = lattice.square();
+		var nodes = latz.nodes;
+		horst = latz;
+		var svg  = d3.select("#example_1").append("svg")
+			.attr("width", width)
+			.attr("height", height)
+	
+		svg.selectAll(".cell").data(nodes).enter().append("path")
+			.attr("class","cell")
+			.attr("d",function(d){
+				return line(latz.cell(d))
+			})
+			.on("mouseover",function(d){
+				nodes.forEach(function(x){x.state=""})
+				d.state="selected";
+				d.neighbors.forEach(function(x){x.state="neighbor"})				
+				svg.selectAll(".cell")
+					.attr("class",function(a){return a.state == "selected" ? 
+					"cell selected" : (a.state=="neighbor" ? "cell neighbor" : "cell")})
+			})
+		
+		svg.on("mouseout",function(){
+			nodes.forEach(function(x){x.state=""})
+				svg.selectAll(".cell")
+					.attr("class",function(a){return a.state == "selected" ? 
+					"cell selected" : (a.state=="neighbor" ? "cell neighbor" : "cell")})
+		})	
+				
+		})()
+		
+		</script>
+		
+		<h2>Example 2: Hexagonal Lattice</h2>
+		
+		<code>lattice.hex()</code>
+		
+		<div class="content" id="example_2"></div>
+		
+		<script type="text/javascript">
+	
+		(function(){
+		var width = 300,
+			height = 300;
+		
+		var L = 10;
+
+		var X = d3.scaleLinear().domain([-L-1,L+1]).range([0,width]);
+		var Y = d3.scaleLinear().domain([-L-1,L+1]).range([0,height]);
+		var line = d3.line().x(function(d) { return X(d.x); }).y(function(d) { return Y(d.y);; });
+
+		var latz = lattice.hex();
+		var nodes = latz.nodes;
+
+		var svg  = d3.select("#example_2").append("svg")
+			.attr("width", width)
+			.attr("height", height)
+	
+		svg.selectAll(".cell").data(nodes).enter().append("path")
+			.attr("class","cell")
+			.attr("d",function(d){
+				return line(latz.cell(d))
+			})
+			.on("mouseover",function(d){
+				nodes.forEach(function(x){x.state=""})
+				d.state="selected";
+				d.neighbors.forEach(function(x){x.state="neighbor"})				
+				svg.selectAll(".cell")
+					.attr("class",function(a){return a.state == "selected" ? 
+					"cell selected" : (a.state=="neighbor" ? "cell neighbor" : "cell")})
+			})
+		svg.on("mouseout",function(){
+				nodes.forEach(function(x){x.state=""})
+					svg.selectAll(".cell")
+						.attr("class",function(a){return a.state == "selected" ? 
+						"cell selected" : (a.state=="neighbor" ? "cell neighbor" : "cell")})
+		})
+					
+		})()
+		
+		</script>
+		
+		
+
+		<h2>Example 3: Scaled Hexagonal Lattice</h2>
+		<code>lattice.hex(20).scale(0.75)</code>
+		<div class="content" id="example_3"></div>
+		
+		
+		<script type="text/javascript">
+	
+		(function(){
+		var width = 300,
+			height = 300;
+		
+		var L = 20;
+
+		var X = d3.scaleLinear().domain([-L-1,L+1]).range([0,width]);
+		var Y = d3.scaleLinear().domain([-L-1,L+1]).range([0,height]);
+		var line = d3.line().x(function(d) { return X(d.x); }).y(function(d) { return Y(d.y);; });
+
+		var latz = lattice.hex(L).scale(0.75);
+		var nodes = latz.nodes;
+		
+		var svg  = d3.select("#example_3").append("svg")
+			.attr("width", width)
+			.attr("height", height)
+	
+		svg.selectAll(".cell").data(latz.nodes).enter().append("path")
+			.attr("class","cell")
+			.attr("d",function(d){
+				return line(latz.cell(d))
+			})
+			.on("mouseover",function(d){
+				latz.nodes.forEach(function(x){x.state=""})
+				d.state="selected";
+				d.neighbors.forEach(function(x){x.state="neighbor"})				
+				svg.selectAll(".cell")
+					.attr("class",function(a){return a.state == "selected" ? 
+					"cell selected" : (a.state=="neighbor" ? "cell neighbor" : "cell")})
+			})
+			
+			svg.on("mouseout",function(){
+					nodes.forEach(function(x){x.state=""})
+						svg.selectAll(".cell")
+							.attr("class",function(a){return a.state == "selected" ? 
+							"cell selected" : (a.state=="neighbor" ? "cell neighbor" : "cell")})
+			})
+					
+		})()
+		
+		</script>
+
+		<h2>Example 4: Square Lattice of size 7 with periodic boundary conditions</h2>
+		<div class="content" id="example_4"></div>
+
+		<script type="text/javascript">
+	
+		(function(){
+		var width = 300,
+			height = 300;
+		
+		var L = 7;
+
+		var X = d3.scaleLinear().domain([-L-1,L+1]).range([0,width]);
+		var Y = d3.scaleLinear().domain([-L-1,L+1]).range([0,height]);
+		var line = d3.line().x(function(d) { return X(d.x); }).y(function(d) { return Y(d.y);; });
+
+		var latz = lattice.square(L).scale(0.9).boundary("periodic");
+		var nodes = latz.nodes;
+		
+		var svg  = d3.select("#example_4").append("svg")
+			.attr("width", width)
+			.attr("height", height)
+	
+		svg.selectAll(".cell").data(latz.nodes).enter().append("path")
+			.attr("class","cell")
+			.attr("d",function(d){
+				return line(latz.cell(d))
+			})
+			.on("mouseover",function(d){
+				latz.nodes.forEach(function(x){x.state=""})
+				d.state="selected";
+				d.neighbors.forEach(function(x){x.state="neighbor"})				
+				svg.selectAll(".cell")
+					.attr("class",function(a){return a.state == "selected" ? 
+					"cell selected" : (a.state=="neighbor" ? "cell neighbor" : "cell")})
+			})
+			
+			svg.on("mouseout",function(){
+					nodes.forEach(function(x){x.state=""})
+						svg.selectAll(".cell")
+							.attr("class",function(a){return a.state == "selected" ? 
+							"cell selected" : (a.state=="neighbor" ? "cell neighbor" : "cell")})
+			})	
+				
+		})()
+		
+		</script>
+		
+
+		<h2>Example 4: Square Lattice of size 20 with periodic boundary conditions</h2>
+		<div class="content" id="example_5"></div>
+		
+		<script type="text/javascript">
+	
+		(function(){
+		var width = 300,
+			height = 300;
+		
+		var L = 7;
+
+		var X = d3.scaleLinear().domain([-L-1,L+1]).range([0,width]);
+		var Y = d3.scaleLinear().domain([-L-1,L+1]).range([0,height]);
+		var line = d3.line().x(function(d) { return X(d.x); }).y(function(d) { return Y(d.y);; });
+
+		var latz = lattice.hex(L).scale(0.9).boundary("periodic");
+		var nodes = latz.nodes;
+		
+		var svg  = d3.select("#example_5").append("svg")
+			.attr("width", width)
+			.attr("height", height)
+	
+		svg.selectAll(".cell").data(latz.nodes).enter().append("path")
+			.attr("class","cell")
+			.attr("d",function(d){
+				return line(latz.cell(d))
+			})
+			.on("mouseover",function(d){
+				latz.nodes.forEach(function(x){x.state=""})
+				d.state="selected";
+				d.neighbors.forEach(function(x){x.state="neighbor"})				
+				svg.selectAll(".cell")
+					.attr("class",function(a){return a.state == "selected" ? 
+					"cell selected" : (a.state=="neighbor" ? "cell neighbor" : "cell")})
+			})
+			
+			svg.on("mouseout",function(){
+					nodes.forEach(function(x){x.state=""})
+						svg.selectAll(".cell")
+							.attr("class",function(a){return a.state == "selected" ? 
+							"cell selected" : (a.state=="neighbor" ? "cell neighbor" : "cell")})
+			})	
+				
+		})()
+		
+		</script>
+		
+	</body>
+	
+</html>
