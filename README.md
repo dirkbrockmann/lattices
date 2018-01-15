@@ -6,7 +6,10 @@ A d3 module for making Dd square and hexagonal lattices with optional periodic b
 
 Install into a directory ```PATH```:
 
+```shell
+git clone https://github.com/dirkbrockmann/lattice.git PATH
 ```
+or download ```lattice.js``` and save 
 
 ## Usage
 
