@@ -1,27 +1,26 @@
 # 2D Square and Hexagonal Lattices
 
-A d3 module for making Dd square and hexagonal lattices with optional periodic boundary conditions, size and scale options and cell geometries. 
+```lattice.js``` helps making 2-d square and hexagonal lattices with optional periodic boundary conditions, size and scale options and cell geometries in d3. 
 
 ## Installation
 
-Install into a directory ```DIRECTORY```:
 
 ```shell
 git clone https://github.com/dirkbrockmann/lattice.git
 ```
-or download ```lattice.js``` and save 
+
+Include a local copy in your header like so:
+
+```html
+	<script src="https://d3js.org/d3.v4.min.js"></script>
+	<script src="lattice.js"></script>
+```
 
 ## Usage
 
-If you want to use ```lattice.js``` for D3 vizualizations, just include it in your header like so:
+you can generate regular square lattices and hexagonal latticess, both either with periodic boundary conditions or
 
-```html
-	<script src="[PATH]/lattice.js"></script>
-```
-
-```javascript
-var horst = lattice.hex()
-```
+#### ```var horst = lattice.hex()```
 
 ```javascript
 var horst = lattice.square()
