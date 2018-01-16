@@ -41,7 +41,7 @@ var Sq = lattice.square(L).boundary("periodic")
 ```
 creates a lattice of size L with periodic boundary conditions.
 
-In the square lattices, each node has 6 neighbors when boundary conditions are periodic. When they are not the nodes on the borders have 4 neighbors, the nodes in the corners have 3.
+In the square lattices, each node has 8 neighbors when boundary conditions are periodic. When they are not the nodes on the borders have 5 neighbors, the nodes in the corners have 3.
 
 ####  Hexagonal Lattices
 
@@ -60,26 +60,50 @@ creates a hex lattice of size L.
 ```js
 var Hx = lattice.hex(L).boundary("periodic")
 ```
-creates a hex lattice of size L with periodic boundary conditions. Periodic boundary conditions are a bit tricky in hex lattices, but it can be worked out, see e.g. here: 
 
-In the square lattices, each node has 6 neighbors when boundary conditions are periodic. When they are not the nodes on the borders have 4 neighbors, the nodes in the corners have 3.
+creates a hex lattice of size L with periodic boundary conditions. Periodic boundary conditions are a bit tricky in hex lattices, but it can be worked out, see  [https://www.redblobgames.com/grids/hexagons/](https://www.redblobgames.com/grids/hexagons/).  
 
-```javascript
-var inge = lattice.square(20).boundary("periodic")
-```
+In hex lattices, each node has 6 neighbors when boundary conditions are periodic. When they are not the nodes on the borders have 4 neighbors, the nodes in the corners have 3.
 
-```javascript
-var dieter = lattice.square(20).boundary("dirichlet")
-```
+## Lattice properties
 
-The fedault
+Both, square and hex lattice have the following fields. Say you have defined a lattice ```G = lattice.hex()``` or ```G = lattice.square()``` then
 
+-  ```G.L``` : returns its linear size 
+-  ```G.N``` : returns the number of nodes
+-  ```G.type``` : returns its type, i.e. "hexagonal" / "square"
 
 ## Nodes
 
+Nodes can be accessed  by ```G.nodes```. Each node has in the array has x and y coordinates and a neighbor array. e.g.
+
+-  ```G.nodes[i].x``` : returns node i's x-coordinate 
+-  ```G.nodes[i].y``` : returns node i's y-coordinate
+-  ```G.nodes[i].neighbors``` : returns all of i's neighbors
+
 ## Scale
+
+```js
+G.scale(s)
+```
+sets the spatial scale of the lattice to ```s```. The default value is 1. This effects the x and y coordinates of the nodes and their boundaries. Without argument, the current scale is returned.
 
 ## Boundary Condition
 
+```js
+G.boundary(["periodic"|"dirichlet"])
+```
+sets the type of boundary condition. Default is "dirichlet". Without an argument, returns the lattice's boundary type.
+
 ## Cell
+
+The boundary of each node can be accessed by ```G.cell(node)```, which is useful for drawing nodes, e.g.
+
+```js
+var G = lattice.hex(20);
+points = G.cell(G.nodes[17]);
+```
+
+```points```` here contains an array of 7 points, each with x,y coordinates that define the hexagonal boundary of node 17. The function .cell() requires a node as an argument.
+
 
