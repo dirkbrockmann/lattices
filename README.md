@@ -22,9 +22,9 @@ Include a local copy in your header like so:
 
 You can generate ***regular square*** lattices and ***hexagonal*** lattices, both either with periodic boundary conditions or not (Dirichlet boundaries). 
 
-## Setting up lattices
+### Setting up lattices
 
-### Square Lattices
+#### Square Lattices
 
 ```js
 var Sq = lattice.square()
@@ -43,7 +43,7 @@ creates a lattice of size L with periodic boundary conditions.
 
 In the square lattices, each node has 8 neighbors when boundary conditions are periodic. When they are not the nodes on the borders have 5 neighbors, the nodes in the corners have 3.
 
-###  Hexagonal Lattices
+####  Hexagonal Lattices
 
 ```js
 var Hx = lattice.hex()
@@ -65,7 +65,7 @@ creates a hex lattice of size L with periodic boundary conditions. Periodic boun
 
 In hex lattices, each node has 6 neighbors when boundary conditions are periodic. When they are not the nodes on the borders have 4 neighbors, the nodes in the corners have 3.
 
-## Lattice properties
+### Lattice properties
 
 Both, square and hex lattice have the following fields. Say you have defined a lattice ```G = lattice.hex()``` or ```G = lattice.square()``` then
 
@@ -73,7 +73,7 @@ Both, square and hex lattice have the following fields. Say you have defined a l
 -  ```G.N``` : returns the number of nodes
 -  ```G.type``` : returns its type, i.e. "hexagonal" / "square"
 
-## Nodes
+### Nodes
 
 Nodes can be accessed  by ```G.nodes```. Each node has in the array has x and y coordinates and a neighbor array. e.g.
 
@@ -81,21 +81,21 @@ Nodes can be accessed  by ```G.nodes```. Each node has in the array has x and y 
 -  ```G.nodes[i].y``` : returns node i's y-coordinate
 -  ```G.nodes[i].neighbors``` : returns all of i's neighbors
 
-## Scale
+### Scale
 
 ```js
 G.scale(s)
 ```
 sets the spatial scale of the lattice to ```s```. The default value is 1. This effects the x and y coordinates of the nodes and their boundaries. Without argument, the current scale is returned.
 
-## Boundary Condition
+### Boundary Condition
 
 ```js
 G.boundary(["periodic"|"dirichlet"])
 ```
 sets the type of boundary condition. Default is "dirichlet". Without an argument, returns the lattice's boundary type.
 
-## Cell
+### Cell
 
 The boundary of each node can be accessed by ```G.cell(node)```, which is useful for drawing nodes, e.g.
 
