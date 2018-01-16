@@ -22,9 +22,9 @@ Include a local copy in your header like so:
 
 You can generate ***regular square*** lattices and ***hexagonal*** lattices, both either with periodic boundary conditions or not (Dirichlet boundaries). 
 
-### Setting up lattices
+## Setting up lattices
 
-#### Square Lattices
+### Square Lattices
 
 ```js
 var Sq = lattice.square()
@@ -43,7 +43,7 @@ creates a lattice of size L with periodic boundary conditions.
 
 In the square lattices, each node has 8 neighbors when boundary conditions are periodic. When they are not the nodes on the borders have 5 neighbors, the nodes in the corners have 3.
 
-####  Hexagonal Lattices
+###  Hexagonal Lattices
 
 ```js
 var Hx = lattice.hex()
