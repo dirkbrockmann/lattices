@@ -1,11 +1,10 @@
-# 2-d Lattices
+# lattice
 
 ```lattice.js``` helps making 2-d square and hexagonal lattice objects with optional periodic boundary conditions, size and scale options and easy access to nodes, node neighbors and cell geometries. 
 
-This can be useful for programming visualizations in d3. 
+This can be useful for programming visualizations and agent based simulations in d3. 
 
 ## Installation
-
 
 ```shell
 git clone https://github.com/dirkbrockmann/lattice.git
@@ -20,7 +19,7 @@ Include a local copy in your header like so:
 
 ## Usage
 
-You can generate ***regular square*** lattices and ***hexagonal*** lattices, both either with periodic boundary conditions or not (Dirichlet boundaries). 
+You can generate ***square*** and ***hexagonal*** lattices, both either with periodic boundary conditions or not (Dirichlet boundaries). 
 
 ### Setting up lattices
 
@@ -31,17 +30,19 @@ var Sq = lattice.square()
 ```
 creates a simple square lattice and stores it in ```Sq```. By default the lattice doesn't have periodic boundaries and has linear size L = 10. The (x,y)-coordinates of the lattice range from -L to L in both dimensions, so the number of nodes are (2L+1)^2. 
 
+You can pass an integer as a linear size argument:
+
 ```js
 var Sq = lattice.square(L)
 ```
-creates a lattice of size L.
+This creates a lattice of size L.
 
 ```js
 var Sq = lattice.square(L).boundary("periodic")
 ```
 creates a lattice of size L with periodic boundary conditions.
 
-In the square lattices, each node has 8 neighbors when boundary conditions are periodic. When they are not the nodes on the borders have 5 neighbors, the nodes in the corners have 3.
+In square lattices, each node has 8 neighbors when boundary conditions are periodic. When they are not the nodes on the borders have 5 neighbors, the nodes in the corners have 3.
 
 ####  Hexagonal Lattices
 
@@ -75,18 +76,18 @@ Both, square and hex lattice have the following fields. Say you have defined a l
 
 ### Nodes
 
-Nodes can be accessed  by ```G.nodes```. Each node has in the array has x and y coordinates and a neighbor array. e.g.
+Nodes can be accessed  by ```G.nodes```. Each node in the array has x and y coordinates and a neighbor array. e.g.
 
 -  ```G.nodes[i].x``` : returns node i's x-coordinate 
 -  ```G.nodes[i].y``` : returns node i's y-coordinate
--  ```G.nodes[i].neighbors``` : returns all of i's neighbors
+-  ```G.nodes[i].neighbors``` : returns an array of all of i's neighbors
 
 ### Scale
 
 ```js
 G.scale(s)
 ```
-sets the spatial scale of the lattice to ```s```. The default value is 1. This effects the x and y coordinates of the nodes and their boundaries. Without argument, the current scale is returned.
+sets the spatial scale of the lattice to ```s```. The default value is 1. This effects the x and y coordinates of the nodes and their boundaries. Without argument, the current scale of ```G``` is returned.
 
 ### Boundary Condition
 
@@ -101,9 +102,9 @@ The boundary of each node can be accessed by ```G.cell(node)```, which is useful
 
 ```js
 var G = lattice.hex(20);
-points = G.cell(G.nodes[17]);
+var points = G.cell(G.nodes[17]);
 ```
 
-```points```` here contains an array of 7 points, each with x,y coordinates that define the hexagonal boundary of node 17. The function .cell() requires a node as an argument.
+```points``` here contains an array of 7 points, each with x,y coordinates that define the hexagonal boundary of node 17. The function .cell() requires a node as an argument. 
 
 
