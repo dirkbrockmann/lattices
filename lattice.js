@@ -197,6 +197,77 @@ var lattice = (function(){
 					})
 		
 				})
+				
+				
+				p.forEach(function(d){
+					d.triangles = [];
+					tri.forEach(function(n){
+		
+						var nuck = hexid ({l:(d.l+n[0].l),m:(d.m+n[0].m),n:(d.n+n[0].n)});
+						var puck = hexid ({l:(d.l+n[1].l),m:(d.m+n[1].m),n:(d.n+n[1].n)});
+												
+						if (typeof lookup[nuck] === 'undefined')  {
+							if (d.l+n[0].l==N+1 && Math.abs(d.m+n[0].m)<=N+1 && Math.abs(d.n+n[0].n)<=N) {
+								var nuck = hexid ({l:(d.l+n[0].l-(2*N+1)),m:(d.m+n[0].m+(N+1)),n:(d.n+n[0].n+N)});
+
+							}
+							if (d.l+n[0].l==-(N+1) && Math.abs(d.m+n[0].m)<=N+1 && Math.abs(d.n+n[0].n)<=N) {
+								var nuck = hexid ({l:(d.l+n[0].l+(2*N+1)),m:(d.m+n[0].m-(N+1)),n:(d.n+n[0].n-N)});
+
+							}
+							if (d.m+n[0].m==N+1 && Math.abs(d.l+n[0].l)<=N && Math.abs(d.n+n[0].n)<=N+1) {
+								var nuck = hexid ({m:(d.m+n[0].m-(2*N+1)),n:(d.n+n[0].n+(N+1)),l:(d.l+n[0].l+N)});
+
+							}
+							if (d.m+n[0].m==-(N+1) && Math.abs(d.l+n[0].l)<=N && Math.abs(d.n+n[0].n)<=N+1) {
+								var nuck = hexid ({m:(d.m+n[0].m+(2*N+1)),n:(d.n+n[0].n-(N+1)),l:(d.l+n[0].l-N)});
+
+							}
+							if (d.n+n[0].n==N+1 && Math.abs(d.l+n[0].l)<=N+1 && Math.abs(d.m+n[0].m)<=N) {
+								var nuck = hexid ({n:(d.n+n[0].n-(2*N+1)),l:(d.l+n[0].l+(N+1)),m:(d.m+n[0].m+N)});
+
+							}
+							if (d.n+n[0].n==-(N+1) && Math.abs(d.l+n[0].l)<=N+1 && Math.abs(d.m+n[0].m)<=N) {
+								var nuck = hexid ({n:(d.n+n[0].n+(2*N+1)),l:(d.l+n[0].l-(N+1)),m:(d.m+n[0].m-N)});
+
+							}
+						}
+						
+						if (typeof lookup[puck] === 'undefined')  {
+							if (d.l+n[1].l==N+1 && Math.abs(d.m+n[1].m)<=N+1 && Math.abs(d.n+n[1].n)<=N) {
+								var puck = hexid ({l:(d.l+n[1].l-(2*N+1)),m:(d.m+n[1].m+(N+1)),n:(d.n+n[1].n+N)});
+
+							}
+							if (d.l+n[1].l==-(N+1) && Math.abs(d.m+n[1].m)<=N+1 && Math.abs(d.n+n[1].n)<=N) {
+								var puck = hexid ({l:(d.l+n[1].l+(2*N+1)),m:(d.m+n[1].m-(N+1)),n:(d.n+n[1].n-N)});
+
+							}
+							if (d.m+n[1].m==N+1 && Math.abs(d.l+n[1].l)<=N && Math.abs(d.n+n[1].n)<=N+1) {
+								var puck = hexid ({m:(d.m+n[1].m-(2*N+1)),n:(d.n+n[1].n+(N+1)),l:(d.l+n[1].l+N)});
+
+							}
+							if (d.m+n[1].m==-(N+1) && Math.abs(d.l+n[1].l)<=N && Math.abs(d.n+n[1].n)<=N+1) {
+								var puck = hexid ({m:(d.m+n[1].m+(2*N+1)),n:(d.n+n[1].n-(N+1)),l:(d.l+n[1].l-N)});
+
+							}
+							if (d.n+n[1].n==N+1 && Math.abs(d.l+n[1].l)<=N+1 && Math.abs(d.m+n[1].m)<=N) {
+								var puck = hexid ({n:(d.n+n[1].n-(2*N+1)),l:(d.l+n[1].l+(N+1)),m:(d.m+n[1].m+N)});
+
+							}
+							if (d.n+n[1].n==-(N+1) && Math.abs(d.l+n[1].l)<=N+1 && Math.abs(d.m+n[1].m)<=N) {
+								var puck = hexid ({n:(d.n+n[1].n+(2*N+1)),l:(d.l+n[1].l-(N+1)),m:(d.m+n[1].m-N)});
+
+							}
+						}
+						
+						d.triangles.push([lookup[nuck],lookup[puck]])
+						
+						
+					})
+		
+				})
+				
+				
 			}	
 			function dirichlet_neighbors(p){
 				
