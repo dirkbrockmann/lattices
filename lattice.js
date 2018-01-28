@@ -89,6 +89,16 @@ var lattice = (function(){
 					{l:-1,m:1,n:0}
 				];
 			
+			var	tri = [
+					[u[0],u[1]],
+					[u[1],u[2]],
+					[u[2],u[4]],
+					[u[4],u[5]],
+					[u[5],u[3]],
+					[u[3],u[0]]
+				];
+			
+			
 			var nodes = [];
 			var lookup = {};
 			
@@ -202,6 +212,22 @@ var lattice = (function(){
 					})
 		
 				})
+				
+				p.forEach(function(d){
+					d.triangles = [];
+					tri.forEach(function(n){
+		
+						var nuck = hexid ({l:(d.l+n[0].l),m:(d.m+n[0].m),n:(d.n+n[0].n)});
+						var puck = hexid ({l:(d.l+n[1].l),m:(d.m+n[1].m),n:(d.n+n[1].n)});
+												
+						if (typeof lookup[nuck] !== 'undefined' && typeof lookup[puck] !== 'undefined') {
+							d.triangles.push([lookup[nuck],lookup[puck]])
+						} 
+					})
+		
+				})
+				
+				
 			}	
 						
 		return {
