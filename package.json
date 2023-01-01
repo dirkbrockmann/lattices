@@ -1,6 +1,6 @@
 {
   "name": "lattice",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "a module for making square and hexagonal lattices",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -18,7 +18,7 @@
   ],
   "main": "./src/lattice.js",
   "exports": {
-    "umd": "./dist/lattice.js",
+    "umd": "./dist/lattice.min.js",
     "default": "./src/lattice.js"
   },
   "author": "Dirk Brockmann",

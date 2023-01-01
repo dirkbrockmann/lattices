@@ -5,7 +5,7 @@ module.exports = {
   entry: './src/lattice.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'lattice.js',
+    filename: 'lattice.min.js',
 	library: 'lattice' 
   },
 };
