@@ -2,7 +2,6 @@
   "name": "lattice",
   "version": "1.0.0",
   "description": "a module for making square and hexagonal lattices",
-  "main": "lattice.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "examples": "http-server  -o dist/examples",
@@ -14,9 +13,10 @@
     "d3"
   ],
   "files": [
+    "dist/**/*.js",
     "src/**/*.js"
   ],
-  "main": "src/lattice.js",
+  "main": "./src/lattice.js",
   "exports": {
     "umd": "./dist/lattice.js",
     "default": "./src/lattice.js"
