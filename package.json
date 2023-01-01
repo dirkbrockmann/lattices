@@ -16,10 +16,10 @@
     "dist/**/*.js",
     "src/**/*.js"
   ],
-  "main": "./src/lattice.js",
+  "main": "./src/index.js",
   "exports": {
-    "umd": "./dist/lattice.min.js",
-    "default": "./src/lattice.js"
+    "umd": "./dist/lattice.js",
+    "default": "./src/index.js"
   },
   "author": "Dirk Brockmann",
   "license": "ISC",
