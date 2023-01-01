@@ -1,0 +1,27 @@
+{
+  "name": "lattice",
+  "version": "1.0.0",
+  "description": "a module for making square and hexagonal lattices",
+  "main": "lattice.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "examples": "http-server  -o dist/examples",
+    "build": "webpack --mode production",
+    "dev": "webpack serve --static dist/examples --mode development"
+  },
+  "keywords": [
+    "lattices",
+    "d3"
+  ],
+  "author": "Dirk Brockmann",
+  "license": "ISC",
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.11.1"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
+}

@@ -1,0 +1,72 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="lib/lattice.css">
+	<link rel="stylesheet" href="https://unpkg.com/tachyons@4.12.0/css/tachyons.min.css"/>
+	
+	<script src="../lattice.js"></script>
+	<script src="https://d3js.org/d3.v4.min.js"></script>
+    <title>Lattices</title>
+</head>
+<body class="code pa5">
+    <h1 class="f1 lh-title roboto">Lattices</h1>
+	<p> Here are a few examples that illustrate <strong>lattice.js</strong>. The lattices are visualized with <strong>d3js</strong>. </p>
+		
+	<p>Hover over the lattice to display node information.</p>
+ 
+    <h2 class="f2 lh-copy">Square lattice with periodic boundary conditions and 8-node neighborhood</h1>
+	<p>var latt = lattice.square(5)</p>	
+    <div class="flex flex-wrap justify-center">
+        <div class="" id="ex1_display"></div>
+        <div class="pl3" id="ex1_info"></div>
+    </div>
+
+    <h2 class="f2 lh-copy">Hexagonal lattice with periodic boundary conditions</h1>
+	<p>var latt = lattice.hex(5)</p>	
+    <div class="flex flex-wrap justify-center">
+        <div class="" id="ex2_display"></div>
+        <div class="pl3" id="ex2_info"></div>
+    </div>
+	
+    <h2 class="f2 lh-copy">Square lattice with Dirichlet (non-periodic) boundary conditions</h1>
+	<p>var latt = lattice.square(4).boundary("dirichlet")</p>	
+    <div class="flex flex-wrap justify-center">
+        <div class="" id="ex3_display"></div>
+        <div class="pl3" id="ex3_info"></div>
+    </div>
+	
+    <h2 class="f2 lh-copy">Hexagonal lattice with Dirichlet (non-periodic) boundary conditions</h1>
+	<p>var latt = lattice.hex(4).boundary("dirichlet")</p>	
+    <div class="flex flex-wrap justify-center">
+        <div class="" id="ex4_display"></div>
+        <div class="pl3" id="ex4_info"></div>
+    </div>
+	
+    <h2 class="f2 lh-copy">Square lattice with periodic boundary conditions and 4-node neighborhood</h1>
+	<p>var latt = lattice.square(6).hood("n4")</p>	
+    <div class="flex flex-wrap justify-center">
+        <div class="" id="ex5_display"></div>
+        <div class="pl3" id="ex5_info"></div>
+    </div>
+	
+    <h2 class="f2 lh-copy">Square lattice with spatial scale 10 (default 1.0)</h1>
+	<p>var latt = lattice.square(7).scale(10)</p>	
+    <div class="flex flex-wrap justify-center">
+        <div class="" id="ex6_display"></div>
+        <div class="pl3" id="ex6_info"></div>
+    </div>
+	
+    <h2 class="f2 lh-copy">Hexagonal lattice with spatial scale 10 (default 1.0)</h1>
+	<p>var latt = lattice.hex(7).scale(10)</p>	
+    <div class="flex flex-wrap justify-center">
+        <div class="" id="ex7_display"></div>
+        <div class="pl3" id="ex7_info"></div>
+    </div>
+    
+	<script src="./examples.js"></script>
+</body>
+</html>

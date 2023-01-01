@@ -1,14 +1,24 @@
 # lattice
 
-```lattice.js``` helps making 2-d square and hexagonal lattice objects with optional periodic boundary conditions, size and scale options and easy access to nodes, node neighbors and cell geometries. 
+```lattice.js``` helps making 2-d symmetric square and hexagonal lattice objects with optional periodic boundary conditions, size and scale options and easy access to nodes, node neighbors and cell geometries. 
 
-This can be useful for programming visualizations and agent based simulations in d3. 
+This can be useful for programming visualizations and agent based simulations in `d3js`. 
 
 ## Installation
+
+Clone this repository: 
 
 ```shell
 git clone https://github.com/dirkbrockmann/lattice.git
 ```
+
+Install the package with `npm`:
+
+```shell
+cd lattice
+npm install
+```
+
 
 Include a local copy in your header like so:
 
@@ -106,5 +116,4 @@ var points = G.cell(G.nodes[17]);
 ```
 
 ```points``` here contains an array of 7 points, each with x,y coordinates that define the hexagonal boundary of node 17. The function .cell() requires a node as an argument. 
-
 

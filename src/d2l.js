@@ -1,0 +1,1 @@
+export default function d2l(x,y,n){ return y*n+x; }
