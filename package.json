@@ -13,6 +13,10 @@
     "lattices",
     "d3"
   ],
+  "exports": {
+    "umd": "./dist/lattice.js",
+    "default": "./src/lattice.js"
+  },
   "author": "Dirk Brockmann",
   "license": "ISC",
   "devDependencies": {
