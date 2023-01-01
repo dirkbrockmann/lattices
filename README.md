@@ -12,14 +12,11 @@ Clone this repository:
 git clone https://github.com/dirkbrockmann/lattice.git
 ```
 
-Install the package with `npm`:
+Go to the directory `lattice`, install the dependencies and build `lattice.js` with npm:
 
 ```shell
-cd lattice
-npm install
-npm build
+cd lattice ; npm install; npm build
 ```
-
 
 Include a local copy in your header like so:
 
