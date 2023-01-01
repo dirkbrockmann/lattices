@@ -17,6 +17,7 @@ Install the package with `npm`:
 ```shell
 cd lattice
 npm install
+npm build
 ```
 
 
