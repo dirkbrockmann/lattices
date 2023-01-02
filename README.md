@@ -37,7 +37,6 @@ npm run examples
 Include a local copy in your header like so:
 
 ```html
-<script src="https://d3js.org/d3.v4.min.js"></script>
 <script src="lattice.js"></script>
 ```
 
