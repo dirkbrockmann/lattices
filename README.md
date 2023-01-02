@@ -57,27 +57,23 @@ const N = 10
 const sq = lattice.square(N)
 ```
 
-creates a simple square lattice and stores it in `sq`. By default the lattice has periodic boundaries. $N$ is the linear half-size of the grid. The linear extent of the lattice is $2N+1$, and the number of nodes in the lattice is $(2N+1)^2$.
+creates a simple square lattice and stores it in `sq`.  $N$ is the linear half-size of the lattice. Along each dimension the lattice has $2N+1$ nodes, the total number of nodes is therefore $(2N+1)^2$.
 
-The default lattice fits into a square of spatial extent $LxL$ where $L=1$. $L$ is the spatial scale of the lattice and defaults to $1$.
+By default the lattice has periodic boundaries.
 
-The (x,y)-coordinates of the lattice range from -L to L in both dimensions, so the number of nodes are (2L+1)^2. 
+By default the lattice has a spatial scale fits into a square of spatial size $L\times L$ where $L=1$. $L$ is the spatial scale of the lattice and defaults to $1$. 
+So by default each patch of a lattice site has a size of ($dx\times\dy$) with $dx=dy=(L/(2N+1))$. 
 
-You can pass an integer as a linear size argument:
+The (x,y)-coordinates of the lattice range from -L/2 to L/2 in both dimensions:
 
-```js
-var Sq = lattice.square(L)
-```
-This creates a lattice of size L.
+$$x=-L/2+dx/2+n dx$$
 
-```js
-var Sq = lattice.square(L).boundary("periodic")
-```
-creates a lattice of size L with periodic boundary conditions.
+$$y=-L/2+dy/2+m dy$$
 
-In square lattices, each node has 8 neighbors when boundary conditions are periodic. When they are not the nodes on the borders have 5 neighbors, the nodes in the corners have 3.
+with $n,m=0,...,2N$.
 
-####  Hexagonal Lattices
+
+###  Hexagonal Lattices
 
 ```js
 var Hx = lattice.hex()
