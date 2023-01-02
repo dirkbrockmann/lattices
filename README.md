@@ -34,24 +34,34 @@ npm run examples
 
 ## Usage
 
-Include a local copy in your header like so:
+If you want to use a local (minified) copy of the bundle, use `dist/lattice.js` and include it like so in your `html`-file:
 
 ```html
 <script src="lattice.js"></script>
 ```
 
-## Usage
+If you want to use it as part of your own project as a module import `lattice` like so:
+
+```js
+import * as lattice from "lattice"
+```
+
+## Setting up a latttice
 
 You can generate ***square*** and ***hexagonal*** lattices, both either with periodic boundary conditions or not (Dirichlet boundaries). 
 
-### Setting up lattices
-
-#### Square Lattices
+### Square Lattice
 
 ```js
-var Sq = lattice.square()
+const N = 10
+const sq = lattice.square(N)
 ```
-creates a simple square lattice and stores it in ```Sq```. By default the lattice doesn't have periodic boundaries and has linear size L = 10. The (x,y)-coordinates of the lattice range from -L to L in both dimensions, so the number of nodes are (2L+1)^2. 
+
+creates a simple square lattice and stores it in `sq`. By default the lattice has periodic boundaries. $N$ is the linear half-size of the grid. The linear extent of the lattice is $2N+1$, and the number of nodes in the lattice is $(2N+1)^2$.
+
+The default lattice fits into a square of spatial extent $LxL$ where $L=1$. $L$ is the spatial scale of the lattice and defaults to $1$.
+
+The (x,y)-coordinates of the lattice range from -L to L in both dimensions, so the number of nodes are (2L+1)^2. 
 
 You can pass an integer as a linear size argument:
 
