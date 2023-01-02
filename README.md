@@ -6,17 +6,33 @@ This can be useful for programming visualizations and agent based simulations in
 
 ## Installation
 
-Clone this repository: 
-
 ```shell
 git clone https://github.com/dirkbrockmann/lattice.git
 ```
 
-Go to the directory `lattice`, install the dependencies and build `lattice.js` with npm:
+Go to the directory `lattice`: 
 
 ```shell
-cd lattice ; npm install; npm build
+cd lattice
 ```
+Install package with `npm`:
+
+```shell
+npm install 
+```
+
+Build components with `npm`:
+```shell
+npm run build
+```
+
+### Run examples in `dist/examples`
+
+```shell
+npm run examples
+```
+
+## Usage
 
 Include a local copy in your header like so:
 

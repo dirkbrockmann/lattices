@@ -2,27 +2,31 @@
   "name": "lattice",
   "version": "1.0.1",
   "description": "a module for making square and hexagonal lattices",
+  "repository": "dirkbrockmann/lattice",
+  "author": "Dirk Brockmann <dirk.brockmann@hu-berlin.de> (https://rocs.hu-berlin.de)",
+  "license": "ISC",
+  "keywords": [
+    "lattices",
+    "d3",
+	"square lattice",
+	"hexagonal lattice",
+	"visualization",
+	"explorables"
+  ],
+  "main": "./src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "examples": "http-server  -o dist/examples",
     "build": "webpack --mode production",
     "dev": "webpack serve --static dist/examples --mode development"
   },
-  "keywords": [
-    "lattices",
-    "d3"
-  ],
   "files": [
-    "dist/**/*.js",
-    "src/**/*.js"
+    "dist/*.js",
+    "src/*.js"
   ],
-  "main": "./src/index.js",
   "exports": {
-    "umd": "./dist/lattice.js",
     "default": "./src/index.js"
   },
-  "author": "Dirk Brockmann",
-  "license": "ISC",
   "devDependencies": {
     "http-server": "^14.1.1",
     "webpack": "^5.75.0",
