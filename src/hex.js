@@ -118,7 +118,7 @@ const hex = function(N){
 		type:"hexagonal",
 		L:L,
 		N:N,
-		size:1+6*(2**N-1),
+		size:1+3*N*(N+1),
 		nodes: nodes,
 		scale: scale,
 		boundary: boundary,
