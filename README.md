@@ -7,13 +7,13 @@ This can be useful for programming visualizations and agent based simulations in
 ## Installation
 
 ```shell
-git clone https://github.com/dirkbrockmann/lattice.git
+git clone https://github.com/dirkbrockmann/lattices.git
 ```
 
-Go to the directory `lattice`: 
+Go to the directory `lattices`: 
 
 ```shell
-cd lattice
+cd lattices
 ```
 Install package with `npm`:
 

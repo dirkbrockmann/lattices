@@ -1,8 +1,8 @@
 {
-  "name": "lattice",
-  "version": "1.0.1",
+  "name": "lattices",
+  "version": "1.0.2",
   "description": "a module for making square and hexagonal lattices",
-  "repository": "dirkbrockmann/lattice",
+  "repository": "dirkbrockmann/lattices",
   "author": "Dirk Brockmann <dirk.brockmann@hu-berlin.de> (https://rocs.hu-berlin.de)",
   "license": "ISC",
   "keywords": [
