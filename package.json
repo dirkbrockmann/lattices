@@ -13,19 +13,20 @@
 	"visualization",
 	"explorables"
   ],
-  "main": "./src/index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "examples": "http-server  -o dist/examples",
-    "build": "webpack --mode production",
-    "dev": "webpack serve --static dist/examples --mode development"
-  },
+  "main": "./dist/lattice.js",
+  "module": "src/index.js",
   "files": [
     "dist/*.js",
     "src/*.js"
   ],
   "exports": {
     "default": "./src/index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "examples": "http-server  -o dist/examples",
+    "build": "webpack --mode production",
+    "dev": "webpack serve --static dist/examples --mode development"
   },
   "devDependencies": {
     "http-server": "^14.1.1",
