@@ -8,13 +8,13 @@ const nodeprops_hex = ["Node_index","Number_of_neighbors","l","m","n","x","y"]
 
 // display lattice
 
-display_example(lattice.square(5),"ex1")
-display_example(lattice.hex(5),"ex2")
-display_example(lattice.square(4).boundary("dirichlet"),"ex3")
-display_example(lattice.hex(4).boundary("dirichlet"),"ex4")
-display_example(lattice.square(6).hood("n4"),"ex5")
-display_example(lattice.square(7).scale(10),"ex6")
-display_example(lattice.hex(7).scale(10),"ex7")
+display_example(lattices.square(5),"ex1")
+display_example(lattices.hex(5),"ex2")
+display_example(lattices.square(4).boundary("dirichlet"),"ex3")
+display_example(lattices.hex(4).boundary("dirichlet"),"ex4")
+display_example(lattices.square(6).hood("n4"),"ex5")
+display_example(lattices.square(7).scale(10),"ex6")
+display_example(lattices.hex(7).scale(10),"ex7")
 
 function display_example(lat,target){
 
