@@ -1,17 +1,20 @@
 {
-  "name": "lattices",
+  "name": "@dirkbrockmann/lattices",
   "version": "1.0.0",
   "description": "a module for making square and hexagonal lattices",
-  "repository": "dirkbrockmann/lattices",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dirkbrockmann/lattices.git"
+  },
   "author": "Dirk Brockmann <dirk.brockmann@hu-berlin.de> (https://rocs.hu-berlin.de)",
   "license": "ISC",
   "keywords": [
     "lattices",
     "d3",
-	"square lattice",
-	"hexagonal lattice",
-	"visualization",
-	"explorables"
+    "square lattice",
+    "hexagonal lattice",
+    "visualization",
+    "explorables"
   ],
   "main": "./dist/lattices.js",
   "module": "src/index.js",
@@ -36,5 +39,9 @@
   },
   "dependencies": {
     "lodash": "^4.17.21"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/dirkbrockmann/lattices/issues"
+  },
+  "homepage": "https://github.com/dirkbrockmann/lattices#readme"
 }

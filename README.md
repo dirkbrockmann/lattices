@@ -1,49 +1,61 @@
-# lattice
+# lattices
 
-```lattice.js``` helps making 2-d symmetric square and hexagonal lattice objects with optional periodic boundary conditions, size and scale options and easy access to nodes, node neighbors and cell geometries. 
+```lattices.js``` helps making 2-d symmetric square and hexagonal lattice objects with optional periodic boundary conditions, size and scale options and easy access to nodes, node neighbors and cell geometries. 
 
 This can be useful for programming visualizations and agent based simulations in `d3js`. 
 
 ## Installation
 
+Install the package as a node module:
+
+```shell
+npm install @dirkbrockmann/lattices
+```
+
+or clone this repository and install:
+
 ```shell
 git clone https://github.com/dirkbrockmann/lattices.git
-```
-
-Go to the directory `lattices`: 
-
-```shell
 cd lattices
-```
-Install package with `npm`:
-
-```shell
-npm install 
-```
-
-Build components with `npm`:
-```shell
+npm run install
 npm run build
 ```
 
-### Run examples in `dist/examples`
-
-```shell
-npm run examples
-```
 
 ## Usage
 
-If you want to use a local (minified) copy of the bundle, use `dist/lattice.js` and include it like so in your `html`-file:
+Either load the package as a remote resource like so:
 
 ```html
-<script src="lattice.js"></script>
+<script src="https://unpkg.com/@dirkbrockmann/lattices"></script>
 ```
 
-If you want to use it as part of your own project as a module import `lattice` like so:
+``` 
+<script>
+
+const a = lattices.square(123)
+
+</script>
+``` 
+
+Alternatively, use a local copy (`dist/lattices.js`) and include it  in your `html`-file like so:
+
+```html
+<script src="lattices.js"></script>
+```
+
+```
+<script>
+	
+	const sq = lattices.sq(5).boundary("dirichlet")
+	
+</script>
+```
+
+If you want to use it as part of your own project as a module import `@dirkbrockmann/lattices` like so:
 
 ```js
-import * as lattice from "lattice"
+import * as lattices from "@dirkbrockmann/lattices"
 ```
 
 ## Setting up a latttice
@@ -54,7 +66,7 @@ You can generate ***square*** and ***hexagonal*** lattices, both either with per
 
 ```js
 const N = 10
-const sq = lattice.square(N)
+const sq = lattices.square(N)
 ```
 
 creates a simple square lattice and stores it in `sq`.  $N$ is the linear half-size of the lattice. Along each dimension the lattice has $2N+1$ nodes, the total number of nodes is therefore $(2N+1)^2$.
@@ -76,7 +88,7 @@ with $n,m=0,...,2N$.
 
 ```js
 const N = 10
-const hx = lattice.hex(N) 
+const hx = lattices.hex(N) 
 ```
 
 creates a hexagonal lattice stores it in `hx`. $2*N+1$ is the number of nodes along the horizontal axis. The total number of nodes in the network is $1+3N(N+1)$.
@@ -87,7 +99,7 @@ By default the lattice has a spatial scale $L=1$, so it fits into a rectangle of
 
 ### Lattice properties
 
-Both, **square** and **hexagonal** lattice have the following property fields. Say you have defined a lattice `G = lattice.hex(10)` or `G = lattice.square(10)` then
+Both, **square** and **hexagonal** lattice have the following property fields. Say you have defined a lattice `G = lattices.hex(10)` or `G = lattices.square(10)` then
 
 - `G.N` : is the linear node range $N$ (in this case 10)
 - `G.size` : is the number of nodes in the lattice
@@ -128,13 +140,13 @@ Without an argument, returns the lattice's boundary type.
 For a square lattice you can chose a node's neighborhood to have a neighborhood of the 8 surrounding lattice nodes or only the 4 nodes corresponding to above, below, left and right. Like so
 
 ```js
-const sq = lattice.square(10).hood("n4")
+const sq = lattices.square(10).hood("n4")
 ```
 
 or 
 
 ```js
-const sq = lattice.square(10).hood("n8")
+const sq = lattices.square(10).hood("n8")
 ```
 
 Without arguments `hood()` returns the neighborhood type.
