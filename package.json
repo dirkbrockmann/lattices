@@ -19,11 +19,6 @@
     "dist/*.js",
     "src/*.js"
   ],
-  globalObject: 'this',
-  library: {
-    name: 'lattices',
-    type: 'umd',
-  },
   "exports": {
     "default": "./src/index.js"
   },
