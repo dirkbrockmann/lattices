@@ -30,7 +30,7 @@ Either load the package as a remote resource like so:
 <script src="https://unpkg.com/@dirkbrockmann/lattices"></script>
 ```
 
-``` 
+```html 
 <script>
 
 const a = lattices.square(123)
@@ -44,7 +44,7 @@ Alternatively, use a local copy (`dist/lattices.js`) and include it  in your `ht
 <script src="lattices.js"></script>
 ```
 
-```
+```html
 <script>
 	
 	const sq = lattices.sq(5).boundary("dirichlet")
