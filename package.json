@@ -13,7 +13,7 @@
 	"visualization",
 	"explorables"
   ],
-  "main": "./dist/lattice.js",
+  "main": "./dist/lattices.js",
   "module": "src/index.js",
   "files": [
     "dist/*.js",
