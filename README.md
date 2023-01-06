@@ -17,7 +17,7 @@ or clone this repository and install:
 ```shell
 git clone https://github.com/dirkbrockmann/lattices.git
 cd lattices
-npm run install
+npm install
 npm run build
 ```
 
