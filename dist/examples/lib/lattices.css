@@ -1,0 +1,22 @@
+.cell {
+	stroke:black;
+	fill:white;
+	stroke-width:0.5px;
+}
+
+.cell_focus {
+	fill:purple;
+	stroke:black;
+	stroke-width:0.5px;
+}
+
+.ncell{
+	stroke:black;
+	fill:pink;
+	stroke-width:0.5px;
+}
+
+.center {
+	pointer-events:none;
+	fill:black;
+}
