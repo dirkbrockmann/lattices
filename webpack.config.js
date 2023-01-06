@@ -6,6 +6,10 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'lattices.js',
-	library: 'lattices' 
+	globalObject: 'this',
+	library: {
+	    name: 'lattices',
+	    type: 'umd',
+	},
   },
 };
