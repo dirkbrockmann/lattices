@@ -21,6 +21,23 @@ npm install
 npm run build
 ```
 
+View examples:
+
+```shell
+npm run examples
+```
+
+or start
+
+```shell
+http-server ./dist/
+```
+
+and open `http://localhost:8081/dist/` in the browser.
+
+
+
+
 
 ## Usage
 
@@ -58,7 +75,7 @@ If you want to use it as part of your own project as a module import `@dirkbrock
 import * as lattices from "@dirkbrockmann/lattices"
 ```
 
-## Setting up a latttice
+## Setting up a lattice
 
 You can generate ***square*** and ***hexagonal*** lattices, both either with periodic boundary conditions or not (Dirichlet boundaries). 
 
