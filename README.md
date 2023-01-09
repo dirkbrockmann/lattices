@@ -33,7 +33,7 @@ or start
 http-server ./dist/
 ```
 
-and open `http://localhost:8081/dist/` in the browser.
+and open `http://localhost:8081/examples/` in the browser.
 
 
 
