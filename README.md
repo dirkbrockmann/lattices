@@ -64,7 +64,7 @@ Alternatively, use a local copy (`dist/lattices.js`) and include it  in your `ht
 ```html
 <script>
 	
-	const sq = lattices.sq(5).boundary("dirichlet")
+	const sq = lattices.square(5).boundary("dirichlet")
 	
 </script>
 ```
