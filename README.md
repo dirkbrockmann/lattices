@@ -1,4 +1,4 @@
-# lattices hello
+# lattices
 
 ```lattices.js``` helps making 2-d symmetric square and hexagonal lattice objects with optional periodic boundary conditions, size and scale options and easy access to nodes, node neighbors and cell geometries. 
 
