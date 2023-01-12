@@ -1,0 +1,44 @@
+{
+  "name": "strip-filename-increment",
+  "description": "Operating systems commonly add a trailing increment, or the word 'copy', or something similar to duplicate files. This strips those increments. Tested on Windows, MacOS, and Linux.",
+  "version": "2.0.1",
+  "homepage": "https://github.com/jonschlinkert/strip-filename-increment",
+  "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
+  "repository": "jonschlinkert/strip-filename-increment",
+  "bugs": {
+    "url": "https://github.com/jonschlinkert/strip-filename-increment/issues"
+  },
+  "license": "MIT",
+  "files": [
+    "index.js"
+  ],
+  "main": "index.js",
+  "engines": {
+    "node": ">=8"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "devDependencies": {
+    "gulp-format-md": "^2.0.0",
+    "mocha": "^6.2.0"
+  },
+  "keywords": [
+    "filename",
+    "increment",
+    "strip"
+  ],
+  "verb": {
+    "toc": false,
+    "layout": "default",
+    "tasks": [
+      "readme"
+    ],
+    "plugins": [
+      "gulp-format-md"
+    ],
+    "lint": {
+      "reflinks": true
+    }
+  }
+}

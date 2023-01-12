@@ -9,7 +9,7 @@ This can be useful for programming visualizations and agent based simulations in
 Install the package as a node module:
 
 ```shell
-npm install @dirkbrockmann/lattices
+npm install lattices
 ```
 
 or clone this repository and install:
@@ -33,7 +33,7 @@ or start
 http-server ./dist/
 ```
 
-and open `http://localhost:8081/examples/` in the browser.
+and open `http://localhost:8080/examples/` in the browser.
 
 
 
@@ -44,7 +44,7 @@ and open `http://localhost:8081/examples/` in the browser.
 Either load the package as a remote resource like so:
 
 ```html
-<script src="https://unpkg.com/@dirkbrockmann/lattices"></script>
+<script src="https://unpkg.com/lattices"></script>
 ```
 
 ```html 

@@ -1,6 +1,6 @@
 {
-  "name": "@dirkbrockmann/lattices",
-  "version": "1.0.8",
+  "name": "lattices",
+  "version": "1.0.9",
   "description": "a module for making square and hexagonal lattices",
   "repository": {
     "type": "git",
