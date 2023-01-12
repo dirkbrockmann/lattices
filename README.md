@@ -72,7 +72,7 @@ Alternatively, use a local copy (`dist/lattices.js`) and include it  in your `ht
 If you want to use it as part of your own project as a module import `@dirkbrockmann/lattices` like so:
 
 ```js
-import * as lattices from "@dirkbrockmann/lattices"
+import * as lattices from "lattices"
 ```
 
 ## Setting up a lattice
