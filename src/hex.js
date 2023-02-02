@@ -1,6 +1,6 @@
 // lattice.js
 
-import * as _ from "lodash";
+import {range}  from "lodash";
 
 const b1 = [1,0], b2 = [0.5,Math.sqrt(3)/2];
 
@@ -34,9 +34,9 @@ const hex = function(N){
 	const nodes = [];
 	const lookup = {};
 			
-	_.range(-N,N+1).forEach(function(i){
-		_.range(-N,N+1).forEach(function(j){
-			_.range(-N,N+1).forEach(function(k){
+	range(-N,N+1).forEach(function(i){
+		range(-N,N+1).forEach(function(j){
+			range(-N,N+1).forEach(function(k){
 					if (i+j+k == 0) {
 						nodes.push({l:i,m:j,n:k, 
 							x: dx*i*b1[0]+dx*j*b2[0], 
