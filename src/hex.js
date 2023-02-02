@@ -1,6 +1,6 @@
 // lattice.js
 
-import {range}  from "lodash";
+import {range}  from "lodash-es";
 
 const b1 = [1,0], b2 = [0.5,Math.sqrt(3)/2];
 
