@@ -1,12 +1,12 @@
 // lattice.js
 
-import * as _ from "lodash";
+import {range,zip} from "lodash-es";
 import d2l from "./d2l.js"
 import l2d from "./l2d.js"
 
 const hoods = {
-	"n4" : _.zip([-1,1,0,0],[0,0,-1,1]),
-	"n8" : _.zip([-1,0,1,1,1,0,-1,-1],[-1,-1,-1,0,1,1,1,0])
+	"n4" : zip([-1,1,0,0],[0,0,-1,1]),
+	"n8" : zip([-1,0,1,1,1,0,-1,-1],[-1,-1,-1,0,1,1,1,0])
 }
 
 function neighbors(k,n,bc="periodic",hoodtype="n8"){
@@ -39,7 +39,7 @@ const square = function(M){
 	var dx = L / N;
 	var dy = dx;
 	
-	const nodes = _.range(N*N).map(function(i){
+	const nodes = range(N*N).map(function(i){
 		const pos = l2d(i,N)		
 		return { 
 			m:pos[0], 
