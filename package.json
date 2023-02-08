@@ -1,6 +1,6 @@
 {
   "name": "lattices",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "a module for making square and hexagonal lattices",
   "repository": {
     "type": "git",
