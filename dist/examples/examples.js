@@ -38,6 +38,7 @@ const L = lat.L;
 const X = d3.scaleLinear().domain([-L/2, L/2]).range([0, w]);
 const Y = d3.scaleLinear().domain([-L/2, L/2]).range([0, h]);
 
+
 const line = d3.line().x(d=>X(d.x)).y(d=>Y(d.y))
 const svg = d3.select("#"+target+"_display").append("svg").attr("width",w).attr("height",h)
 
