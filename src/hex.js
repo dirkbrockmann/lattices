@@ -60,6 +60,21 @@ const hex = function(N){
 				{x:d.x + dx / 2, y:d.y + D * dx / 2}
 			]		
 		}
+		d.random_interior_point = () => {
+			const D = 1.0/Math.sqrt(3);
+			const r1 = Math.random();
+			const r2 = Math.random();
+			const theta = Math.floor(Math.random() * 6)*2*Math.PI/6;
+			const x = dx / 2 * Math.sqrt(r1);
+			const y = dx / 2 * Math.sqrt(r1)*D*(1-2*r2);
+			const xn = Math.cos(theta) * x - Math.sin(theta)*y;
+			const yn = Math.sin(theta) * x + Math.cos(theta)*y;
+			
+			return {
+				x:d.x+xn,
+				y:d.y+yn
+			}
+		}
 	})
 
 	if (BoundaryConditions==="periodic") {

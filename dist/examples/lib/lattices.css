@@ -20,3 +20,8 @@
 	pointer-events:none;
 	fill:black;
 }
+
+.ip {
+	pointer-events:none;
+	fill:darkred;
+}

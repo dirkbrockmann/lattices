@@ -16,6 +16,97 @@ display_example(lattices.square(6).hood("n4"),"ex5")
 display_example(lattices.square(7).scale(10),"ex6")
 display_example(lattices.hex(7).scale(10),"ex7")
 
+display_example_random_points(lattices.hex(2),"ex8")
+display_example_random_points(lattices.square(2),"ex9")
+
+function display_example_random_points(lat,target){
+
+
+
+var props = _.toPairs({
+			"N":lat.N,
+			"Number of Nodes":lat.size,
+			"Scale":lat.scale(),
+			"Boundary":lat.boundary()
+})
+	
+if (lat.type=="square"){
+	props.push(["Neighborhood",lat.hood()])
+}
+
+var nodeprops = lat.type=="square" ? nodeprops_square : nodeprops_hex
+
+lat.nodes.forEach(d=>{d.selected_as_neighbor=false})
+
+const L = lat.L;
+
+const X = d3.scaleLinear().domain([-L/2, L/2]).range([0, w]);
+const Y = d3.scaleLinear().domain([-L/2, L/2]).range([0, h]);
+
+
+const line = d3.line().x(d=>X(d.x)).y(d=>Y(d.y))
+const svg = d3.select("#"+target+"_display").append("svg").attr("width",w).attr("height",h)
+
+var cell = svg.selectAll(".cell").data(lat.nodes).enter().append("path")
+	.attr("class",function(d){return d.selected_as_neighbor ? "ncell" : "cell" })
+	.attr("d",function(d){
+		return line(d.cell())
+	})
+	.on('mouseover', function(d,i) {
+		d.neighbors.forEach(function(n){n.selected_as_neighbor=true})
+		cell.attr("class",function(d){return d.selected_as_neighbor ? "ncell" : "cell" })
+		d3.select(this).attr('class', 'cell_focus')
+		nodeinfo.select("#Node_index").text(i)
+		nodeinfo.select("#Number_of_neighbors").text(d.neighbors.length)
+		if(lat.type=="hexagonal"){
+			nodeinfo.select("#l").text(n2d(d.l))
+		}
+		nodeinfo.select("#n").text(n2d(d.n))
+		nodeinfo.select("#m").text(n2d(d.m))
+		nodeinfo.select("#x").text(n2d(d.x))
+		nodeinfo.select("#y").text(n2d(d.y))
+	})
+	.on('mouseout', function(d) {
+	    d3.select(this).attr('class', 'cell')
+		d.neighbors.forEach(function(n){n.selected_as_neighbor=false})
+		cell.attr("class",function(d){return d.selected_as_neighbor ? "ncell" : "cell" })
+	});
+
+
+
+	
+var node = svg.selectAll(".node").data(lat.nodes).enter().append("g").attr("class","node")
+	.attr("transform",d=>"translate("+X(d.x)+","+Y(d.y)+")")
+
+var center = node.append("circle").attr("r",3).attr("class","center")
+
+var ips = [];
+
+_.each(lat.nodes,(n,i)=>{
+		let np = i+1
+	ips = _.concat(ips,_.map(_.range(30*np),x=>n.random_interior_point()))
+})
+
+console.log(ips)
+let ip = svg.selectAll(".ip").data(ips).enter().append("circle").attr("class","ip")
+			.attr("cx",d=>X(d.x))
+			.attr("cy",d=>Y(d.y))
+			.attr("r",1)
+// table of properties
+
+var info = d3.select("#"+target+"_info").append("div").attr("class","f5 fw5")
+var nodeinfo = d3.select("#"+target+"_info").append("div").attr("class","f2 fw5 mt3")
+	
+var row1 = info.selectAll(".prop").data(props).enter().append("dl").attr("class","f5 lh-title mv2")
+
+row1.append("dt").attr("class","dib b").text(d=>d[0]+":")
+row1.append("dd").attr("class","dib ml2 gray").text(d=>""+d[1])
+
+var row2 = nodeinfo.selectAll(".prop").data(nodeprops).enter().append("dl").attr("class","f5 lh-title mv1")
+
+row2.append("dt").attr("class","dib b").text(d=>d.replaceAll("_", " ")+":")
+row2.append("dd").attr("class","dib ml2 gray").text("").attr("id",d=>d)
+}
 function display_example(lat,target){
 
 var props = _.toPairs({

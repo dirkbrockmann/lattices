@@ -59,7 +59,14 @@ const square = function(M){
 				{x:d.x + dx / 2, y:d.y - dy / 2},
 				{x:d.x + dx / 2, y:d.y + dy / 2}
 			]
+		},
+		d.random_interior_point = () => {
+			return {
+				x:d.x+dx*(Math.random()-0.5),
+				y:d.y+dy*(Math.random()-0.5)
+			}
 		}
+		
 	});
 	
 	// methods
