@@ -1,6 +1,6 @@
 // lattice.js
 
-import {range}  from "lodash-es";
+import {range,filter}  from "lodash-es";
 
 const b1 = [1,0], b2 = [0.5,Math.sqrt(3)/2];
 
@@ -45,8 +45,12 @@ const hex = function(N){
 			})
 		})	
 	})
+	
+	
 		
 	nodes.forEach(function(d){
+
+
 		lookup[hexid(d)]=d;
 		d.cell = () => {
 			const D = 1.0/Math.sqrt(3);			
@@ -77,11 +81,8 @@ const hex = function(N){
 		}
 	})
 
-	if (BoundaryConditions==="periodic") {
-		periodic(nodes)
-	} else {
-		dirichlet(nodes)
-	}	
+	
+	periodic(nodes)
 	
 		
 	const scale = function(s){
@@ -123,10 +124,23 @@ const hex = function(N){
 			   	 	periodic(nodes);
 					
 				}
+				
+				nodes.forEach(d=>{
+					d.is_boundary = BoundaryConditions == "dirichlet" && (d.n==-N || d.n==N || d.l == -N || d.l == N || d.m == -N || d.m == N)
+				})
+				
 				return this;
 			} else {
 				return BoundaryConditions;
 			}
+	}
+	
+	const boundary_cells = function(){
+		if (BoundaryConditions==="periodic") {
+			return null;
+		} else {
+			return filter(nodes,n=>{return n.n==-N || n.n==N || n.l == -N || n.l == N || n.m == -N || n.m == N})
+		}	
 	}
 					
 	return {
@@ -137,6 +151,7 @@ const hex = function(N){
 		nodes: nodes,
 		scale: scale,
 		boundary: boundary,
+		boundary_cells: boundary_cells,
 		cell:cell
 	}
 	

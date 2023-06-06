@@ -16,6 +16,12 @@
 	stroke-width:0.5px;
 }
 
+.bcell{
+	stroke:black;
+	fill:yellow;
+	stroke-width:0.5px;
+}
+
 .center {
 	pointer-events:none;
 	fill:black;

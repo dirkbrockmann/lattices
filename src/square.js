@@ -1,6 +1,6 @@
 // lattice.js
 
-import {range,zip} from "lodash-es";
+import {range,zip,filter} from "lodash-es";
 import d2l from "./d2l.js"
 import l2d from "./l2d.js"
 
@@ -90,6 +90,9 @@ const square = function(M){
 				d.neighbors=neighbors(i,N,b,Neighborhood).map(x=>nodes[x]);
 			})
 			BoundaryConditions = b
+			nodes.forEach(d=>{
+				d.is_boundary = BoundaryConditions == "dirichlet" && (d.n==0 || d.n==2*M || d.m == 0 || d.m == 2*M)
+			})
 			return this;
 		} else {
 			return BoundaryConditions;
@@ -107,6 +110,14 @@ const square = function(M){
 			return Neighborhood;
 		}
 	}
+	
+	const boundary_cells = function(){
+		if (BoundaryConditions==="periodic") {
+			return null;
+		} else {
+			return filter(nodes,n=>{return n.n==0 || n.n==2*M || n.m == 0 || n.m == 2*M})
+		}	
+	}
 			
 	return {
 		type:"square",
@@ -116,7 +127,8 @@ const square = function(M){
 		hood: hood,
 		nodes: nodes,
 		scale: scale,
-		boundary: boundary
+		boundary: boundary,
+		boundary_cells:boundary_cells
 	}
 }
 

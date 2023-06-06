@@ -19,8 +19,10 @@ display_example(lattices.hex(7).scale(10),"ex7")
 display_example_random_points(lattices.hex(2),"ex8")
 display_example_random_points(lattices.square(2),"ex9")
 
-function display_example_random_points(lat,target){
 
+console.log(lattices.hex(5).boundary("dirichlet"))
+
+function display_example_random_points(lat,target){
 
 
 var props = _.toPairs({
@@ -87,7 +89,7 @@ _.each(lat.nodes,(n,i)=>{
 	ips = _.concat(ips,_.map(_.range(30*np),x=>n.random_interior_point()))
 })
 
-console.log(ips)
+
 let ip = svg.selectAll(".ip").data(ips).enter().append("circle").attr("class","ip")
 			.attr("cx",d=>X(d.x))
 			.attr("cy",d=>Y(d.y))
@@ -107,6 +109,7 @@ var row2 = nodeinfo.selectAll(".prop").data(nodeprops).enter().append("dl").attr
 row2.append("dt").attr("class","dib b").text(d=>d.replaceAll("_", " ")+":")
 row2.append("dd").attr("class","dib ml2 gray").text("").attr("id",d=>d)
 }
+
 function display_example(lat,target){
 
 var props = _.toPairs({
@@ -134,7 +137,7 @@ const line = d3.line().x(d=>X(d.x)).y(d=>Y(d.y))
 const svg = d3.select("#"+target+"_display").append("svg").attr("width",w).attr("height",h)
 
 var cell = svg.selectAll(".cell").data(lat.nodes).enter().append("path")
-	.attr("class",function(d){return d.selected_as_neighbor ? "ncell" : "cell" })
+	.attr("class",function(d){return d.is_boundary ? "bcell" : d.selected_as_neighbor ? "ncell" : "cell" })
 	.attr("d",function(d){
 		return line(d.cell())
 	})
